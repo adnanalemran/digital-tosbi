@@ -85,12 +85,15 @@ Btn3Min.addEventListener('click', function() {
 
 // Event listener for resetBtn
 resetBtn.addEventListener('click', function() {
-    status1Value = 0;
-    status1.innerText = status1Value;
+    const confirmed = confirm("আপনি কি সব স্ট্যাটাস রিসেট করার বিষয়ে নিশ্চিত?");
+    if (confirmed) {
+        status1Value = 0;
+        status1.innerText = status1Value;
 
-    status2Value = 0;
-    status2.innerText = status2Value;
+        status2Value = 0;
+        status2.innerText = status2Value;
 
-    status3Value = 0;
-    status3.innerText = status3Value;
+        status3Value = 0;
+        status3.innerText = status3Value;
+    }
 });
