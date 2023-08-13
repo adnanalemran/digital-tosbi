@@ -1,99 +1,100 @@
-// Get the elements for status1 and its buttons
-const status1 = document.getElementById('status1');
-const Btn1add = document.getElementById('Btn1add');
-const Btn1Min = document.getElementById('Btn1Min');
+document.addEventListener('DOMContentLoaded', function () {
+    const progressElement1 = document.getElementById('progress1');
+    const statusElement1 = document.getElementById('status1');
+    const Btn1add = document.getElementById('Btn1add');
+    const Btn1Min = document.getElementById('Btn1Min');
 
-// Get the elements for status2 and its buttons
-const status2 = document.getElementById('status2');
-const Btn2add = document.getElementById('Btn2add');
-const Btn2Min = document.getElementById('Btn2Min');
+    const progressElement2 = document.getElementById('progress2');
+    const statusElement2 = document.getElementById('status2');
+    const Btn2add = document.getElementById('Btn2add');
+    const Btn2Min = document.getElementById('Btn2Min');
 
-// Get the elements for status3 and its buttons
-const status3 = document.getElementById('status3');
-const Btn3add = document.getElementById('Btn3add');
-const Btn3Min = document.getElementById('Btn3Min');
+    const progressElement3 = document.getElementById('progress3');
+    const statusElement3 = document.getElementById('status3');
+    const Btn3add = document.getElementById('Btn3add');
+    const Btn3Min = document.getElementById('Btn3Min');
 
-// Get the reset button
+    let value1 = 0;
+
+    Btn1add.addEventListener('click', function () {
+        if (value1 < 33) {
+            value1 += 1;
+            statusElement1.innerText = value1;
+            progressElement1.value = (value1 / 33) * 100;
+        } else {
+            alert("এই ধাপটি সম্পন্ন হয়েছে");
+        }
+    });
+
+    Btn1Min.addEventListener('click', function () {
+        if (value1 > 0) {
+            value1 -= 1;
+            statusElement1.innerText = value1;
+            progressElement1.value = (value1 / 33) * 100;
+        } else {
+            alert("বিয়োগ মান করা যাবে না");
+        }
+    });
+
+    let value2 = 0;
+
+    Btn2add.addEventListener('click', function () {
+        if (value2 < 33) {
+            value2 += 1;
+            statusElement2.innerText = value2;
+            progressElement2.value = (value2 / 33) * 100;
+        } else {
+            alert("এই ধাপটি সম্পন্ন হয়েছে");
+        }
+    });
+
+    Btn2Min.addEventListener('click', function () {
+        if (value2 > 0) {
+            value2 -= 1;
+            statusElement2.innerText = value2;
+            progressElement2.value = (value2 / 33) * 100;
+        } else {
+            alert("বিয়োগ মান করা যাবে না");
+        }
+    });
+
+    let value3 = 0;
+
+    Btn3add.addEventListener('click', function () {
+        if (value3 < 33) {
+            value3 += 1;
+            statusElement3.innerText = value3;
+            progressElement3.value = (value3 / 33) * 100;
+        } else {
+            alert("এই ধাপটি সম্পন্ন হয়েছে");
+        }
+    });
+
+    Btn3Min.addEventListener('click', function () {
+        if (value3 > 0) {
+            value3 -= 1;
+            statusElement3.innerText = value3;
+            progressElement3.value = (value3 / 33) * 100;
+        } else {
+            alert("বিয়োগ মান করা যাবে না");
+        }
+    });
+});
+
 const resetBtn = document.getElementById('resetBtn');
 
-// Initialize variables to store status values
-let status1Value = 0;
-let status2Value = 0;
-let status3Value = 0;
-
-// Event listener for Btn1add
-Btn1add.addEventListener('click', function() {
-    if (status1Value < 33) {
-        status1Value += 1;
-        status1.innerText = status1Value;
-    } else {
-        alert("এই ধাপটি সম্পন্ন হয়েছে");
-    }
-});
-
-// Event listener for Btn1Min
-Btn1Min.addEventListener('click', function() {
-    if (status1Value <= 0) {
-        alert("বিয়োগ মান করা যাবে না ");
-    } else {
-        status1Value -= 1;
-        status1.innerText = status1Value;
-    }
-});
-
-// Event listener for Btn2add
-Btn2add.addEventListener('click', function() {
-    if (status2Value < 33) {
-        status2Value += 1;
-        status2.innerText = status2Value;
-    } else {
-        alert("এই ধাপটি সম্পন্ন হয়েছে");
-    }
-});
-
-// Rest of the Btn2Min, Btn3add, Btn3Min, resetBtn event listeners...
-
-// Event listener for Btn2Min
-Btn2Min.addEventListener('click', function() {
-    if (status2Value <= 0) {
-        alert("বিয়োগ মান করা যাবে না ");
-    } else {
-        status2Value -= 1;
-        status2.innerText = status2Value;
-    }
-});
-
-// Event listener for Btn3add
-Btn3add.addEventListener('click', function() {
-    if (status3Value < 33) {
-        status3Value += 1;
-        status3.innerText = status3Value;
-    } else {
-        alert("এই ধাপটি সম্পন্ন হয়েছে");
-    }
-});
-
-// Event listener for Btn3Min
-Btn3Min.addEventListener('click', function() {
-    if (status3Value <= 0) {
-        alert("বিয়োগ মান করা যাবে না ");
-    } else {
-        status3Value -= 1;
-        status3.innerText = status3Value;
-    }
-});
-
-// Event listener for resetBtn
-resetBtn.addEventListener('click', function() {
+resetBtn.addEventListener('click', function () {
     const confirmed = confirm("আপনি কি সব স্ট্যাটাস রিসেট করার বিষয়ে নিশ্চিত?");
     if (confirmed) {
-        status1Value = 0;
-        status1.innerText = status1Value;
+        const progressElements = document.querySelectorAll('.progress');
+        const statusElements = document.querySelectorAll('.card-title');
 
-        status2Value = 0;
-        status2.innerText = status2Value;
+        progressElements.forEach((progressElement) => {
+            progressElement.value = 0;
+        });
 
-        status3Value = 0;
-        status3.innerText = status3Value;
+        statusElements.forEach((statusElement) => {
+            statusElement.innerText = '0';
+        });
     }
 });
