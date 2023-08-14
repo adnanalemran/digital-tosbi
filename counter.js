@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const Btn3add = document.getElementById('Btn3add');
     const Btn3Min = document.getElementById('Btn3Min');
 
+    const resetBtn = document.getElementById('resetBtn');
+
     let value1 = 0;
 
     Btn1add.addEventListener('click', function () {
@@ -79,22 +81,34 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("বিয়োগ মান করা যাবে না");
         }
     });
+
+    resetBtn.addEventListener('click', function () {
+        const confirmed = confirm("আপনি কি সব স্ট্যাটাস রিসেট করার বিষয়ে নিশ্চিত?");
+        if (confirmed) {
+            const progressElements = document.querySelectorAll('.progress');
+            const statusElements = document.querySelectorAll('.card-title');
+    
+ 
+            value1 = 0;
+            value2 = 0;
+            value3 = 0;
+            
+            statusElement1.innerText = 0;
+            progressElement1.value = 0;
+            
+            statusElement2.innerText = 0;
+            progressElement2.value = 0;
+            
+            statusElement3.innerText = 0;
+            progressElement3.value = 0;
+            
+        }
+    });
+
+
+
 });
 
-const resetBtn = document.getElementById('resetBtn');
 
-resetBtn.addEventListener('click', function () {
-    const confirmed = confirm("আপনি কি সব স্ট্যাটাস রিসেট করার বিষয়ে নিশ্চিত?");
-    if (confirmed) {
-        const progressElements = document.querySelectorAll('.progress');
-        const statusElements = document.querySelectorAll('.card-title');
 
-        progressElements.forEach((progressElement) => {
-            progressElement.value = 0;
-        });
 
-        statusElements.forEach((statusElement) => {
-            statusElement.innerText = '0';
-        });
-    }
-});
